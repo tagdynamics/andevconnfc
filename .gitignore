@@ -27,3 +27,5 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+play-tag/.settings/org.eclipse.jdt.core.prefs
