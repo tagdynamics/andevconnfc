@@ -15,4 +15,10 @@
         android:layout_height="wrap_content"
         android:text="Write Data to Tag" />
 
+    <CheckBox
+        android:id="@+id/checkBoxReadRtdOnly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Only Read RTD_TEXT Tags" />
+
 </LinearLayout>
