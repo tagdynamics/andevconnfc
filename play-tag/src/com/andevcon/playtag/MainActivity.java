@@ -15,6 +15,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -127,7 +128,18 @@ public class MainActivity extends Activity {
 	}
 
 	private void onNfcNdefDiscovered(Tag tag, Intent intent) {
-		// Do something cool
+		Parcelable[] rawMsgs = intent
+				.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
+		for (Parcelable p : rawMsgs) {
+			NdefMessage msg = (NdefMessage) p;
+			NdefRecord[] records = msg.getRecords();
+
+			for (NdefRecord record : records) {
+				String myRtdTextMsg = new String(record.getPayload());
+				Log.i(DEBUG_MAIN_ACTIVITY, myRtdTextMsg);
+			}
+		}
 	}
 
 	private void onNfcTagDiscovered(Tag tag, Intent intent) {
